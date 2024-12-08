@@ -1,48 +1,36 @@
 /*
-  ddm.h - Test library for digital diagnostic monitoring - description
-  Copyright (c) 2017 OAKKAR7.  All right reserved.
+    ddm.h - Test library for digital diagnostic monitoring - description
+    Copyright (c) 2017 OAKKAR7.  All rights reserved.
 
-  By      : oakkar7, Myanmar
-  blog    ; okelectronic.wordpress.com
-  code    : https://github.com/oakkar7
-
+    By      : oakkar7, Myanmar
+    blog    : okelectronic.wordpress.com
+    code    : https://github.com/oakkar7
 */
 
 // ensure this library description is only included once
-#ifndef Test_h
-#define Test_h
+#ifndef DDM_H
+#define DDM_H
 
 // include types & constants of Wiring core API
 #include <Arduino.h>
-//#include "WConstants.h"
-//#define byte uint8_t
 
 // library interface description
 class ddm
 {
-  // user-accessible "public" interface
-  public:
-    float getRX();
-    float getTX();
-    float getTemp();
-    float getVolts();
-    void getALM(boolean & _temp_hi, boolean & _temp_low, boolean & _vcc_hi, boolean & _vcc_low,boolean & _tx_hi, boolean & _tx_low,boolean & _rx_hi, boolean & _rx_low );
-    void getWARN(boolean & _temp_hi_warn, boolean & _temp_low_warn, boolean & _vcc_hi_warn, boolean & _vcc_low_warn,boolean & _tx_hi_warn, boolean & _tx_low_warn,boolean & _rx_hi_warn, boolean & _rx_low_warn );
-    uint16_t calibrateRXpower();
-    void getINFO();
-    void debugDDM();    
-    //uint8_t DDM_Read(unsigned int address);
-    void DDM_All_Read(void);
-    //Test(int);
-    //void doSomething(void);
+    public:
+        float getRX();
+        float getTX();
+        float getTemp();
+        float getVolts();
+        void getALM(boolean &temp_hi, boolean &temp_low, boolean &vcc_hi, boolean &vcc_low, boolean &tx_hi, boolean &tx_low, boolean &rx_hi, boolean &rx_low);
+        void getWARN(boolean &temp_hi_warn, boolean &temp_low_warn, boolean &vcc_hi_warn, boolean &vcc_low_warn, boolean &tx_hi_warn, boolean &tx_low_warn, boolean &rx_hi_warn, boolean &rx_low_warn);
+        uint16_t calibrateRXpower();
+        void getINFO();
+        void debugDDM();    
+        void DDM_All_Read();
 
-  // library-accessible "private" interface
-  private:
-    //int value;
-    //void doSomethingSecret(void);
-    uint8_t DDM_Read(unsigned int address);
-    
+    private:
+        uint8_t DDM_Read(uint8_t address);
 };
 
 #endif
-
